@@ -1,40 +1,28 @@
-#------------------------------------------------------------------------------------------#
-# a dict to repr. det. of a stud.(name,rollno.,reg.no., dep., sem., )                       |
-# add new element total mark                                                                |
-# based on total mark find grade of student                                                 |
-# total mark >= 90 -A                                                                       |
-# total mark >= 82 -B                                                                       |
-# total mark >= 75 -C                                                                       |
-# total mark >= 60 -D                                                                       |
-# total mark >= 50 -P                                                                       |
-# Delete Roll NO.                                                                           |
-#-------------------------------------------------------------------------------------------#
-Bibi = {
-    "name" : input('Enter the name '),
-    "roll.no" : input('Enter your roll number '),
-    "reg.no" : input('Enter your register number '),
-    "Department" : input('Enter your Department '),
-    "Semester" : input('Enter your Current Semester '),   
-}
-print(f'Before Updating Marks\n{Bibi}')
-print()
-Bibi.update({"total_mark" : int(input("Enter your mark out of 100 "))})
-print(f'After updating Marks\n{Bibi}')
-print()
-def calculateGrade(total_mark):
-    if total_mark >= 90:
-        return 'A'
-    elif total_mark >= 82:
-        return 'B'
-    elif total_mark >= 75:
-        return 'C'
-    elif total_mark >= 60:
-        return 'D' 
-    elif total_mark >= 50:
-        return 'P'
-    
-Bibi['grade'] = calculateGrade(Bibi['total_mark'])
-print(f'After adding Grade\n{Bibi}\n')
-print('After Deleting')
-del Bibi["roll.no"]
-print(f'\n{Bibi}')
+student = {}
+student['name'] = input("Enter student's name: ")
+student['roll_no'] = input("Enter roll number: ")
+student['reg_no'] = input("Enter registration number: ")
+student['department'] = input("Enter department: ")
+student['semester'] = input("Enter semester: ")
+print("\nStudent Details:")
+for i, value in student.items():
+    print(f"{i}: {value}")
+
+student['total_marks'] = float(input("Enter total marks: "))
+if student['total_marks'] >= 90:
+    student['grade'] = 'A'
+elif student['total_marks'] >= 82:
+    student['grade'] = 'B'
+elif student['total_marks'] >= 75:
+    student['grade'] = 'C'
+elif student['total_marks'] >= 60:
+    student['grade'] = 'D'
+elif student['total_marks'] >= 50:
+    student['grade'] = 'P'
+else:
+    student['grade'] = 'F'
+
+del student['roll_no']
+print("\nUpdated Student Details (after deleting roll number):")
+for i, value in student.items():
+    print(f"{i}: {value}")
